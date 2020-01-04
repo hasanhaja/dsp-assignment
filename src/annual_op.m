@@ -22,6 +22,8 @@ switch lower(option)
         operation = @(vector) mean(vector);
     case 'sum'
         operation = @(vector) fold(@plus, vector);
+    case 'first'
+        operation = @(vector) vector(1);
     otherwise
         throw(MException('MATLAB:invalidOption','Option is unrecognized. Try "Mean" or "Sum".'));
 end
