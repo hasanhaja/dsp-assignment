@@ -22,3 +22,25 @@ x_std = std(x);
 y_avg = mean(y);
 y_std = std(y);
 
+% Autocorrelation of x and y
+x_auto = xcorr(x);
+y_auto = xcorr(y);
+
+% TODO: Labels and title and potentially zero padding
+figure, plot(x_auto)
+figure, plot(y_auto)
+
+corr_coef = xcorr(x, y);
+
+figure, plot(corr_coef)
+
+% Linear regression (stepwiselm or fitlm?)
+model_fit = fitlm(x, y);
+
+figure, plot(model_fit), grid on, grid minor
+
+% Prediction of membership growth of churches
+
+k = 15;
+l = 3;
+m = 18;
