@@ -54,12 +54,8 @@ plot(years, i48n_sum), title('Accumulative I48N per year'), xlabel('Year'), ylab
 grid on, grid minor
 
 % Time varying correlation of each input and I48N
-% We are doing this because when taking the xcorr the time information is
-% lost. And by windowing the data, you get to preserve some time
-% information.
-% TODO: Slice both signals equally and then calculate the xcorr on the slices.
-% If on raw data, then the test window size could be 12 for the 12 months.
-% TODO: This could be extracted into a function
+% Windowing is useful to capture time information that is lost in the
+% fourier transform. It has no effect on cross correlation.
 smb_corr = xcorr(smb, i48n);
 nao_corr = xcorr(nao, i48n);
 lsst_corr = xcorr(lsst, i48n);
@@ -77,3 +73,11 @@ lsst_avg_corr = xcorr(lsst_avg, i48n_sum);
 figure, plot(smb_avg_corr);
 figure, plot(nao_avg_corr);
 figure, plot(lsst_avg_corr);
+
+% Findings
+% Autocorrelation results
+
+nao_auto = xcorr(nao);
+nao_avg_auto = xcorr(nao_avg);
+% Autocorrelation of Nao and Nao_avg results in nothing. This suggests
+% that it is just noise.

@@ -5,9 +5,6 @@ function folded = annual_op(data, option)
 %   Then, depending on the option, it either averages or sums the annual
 %   data and returns a vector of the values.
 
-
-% todo error check if data set is multiple of 12
-
 if mod(length(data), 12) ~= 0
     throw(MException('MATLAB:invalidData','The dataset cannot be equally divided by 12 for annual operations.'));
 end
@@ -28,6 +25,9 @@ switch lower(option)
         throw(MException('MATLAB:invalidOption','Option is unrecognized. Try "Mean" or "Sum".'));
 end
 
+% The return variable is called folded because this is like the fold/reduce
+% function in functional programming languages, where a collection reduces
+% to a single value.
 for n = 1:length(data2d)
     folded(1, n) = operation(data2d(n, :));
 end

@@ -40,7 +40,10 @@ model_fit = fitlm(x, y);
 figure, plot(model_fit), grid on, grid minor
 
 % Prediction of membership growth of churches
+k_dist = 15;
+l_dist = 3;
+m_dist = 18;
 
-k = 15;
-l = 3;
-m = 18;
+k_growth = model_fit.predict(k_dist);
+l_growth = model_fit.predict(l_dist);
+m_growth = model_fit.predict(m_dist);
