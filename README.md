@@ -6,15 +6,9 @@ The project holds the solution to the DSP Assignment of 2019 at Cranfield Univer
 
 Each of the files are independent to the question with the exception of utility functions for reading from files.
 
-## Todo
-
-- [ ] Explain project file structure and code organization
-- [ ] How to navigate the code
-
 # Case study results
 
-- [ ] Summarize the results and discuss relationship between inputs and outputs including correlation and modelling
-- [ ] Display graphs? This will involve embedding images
+The autocorrelation of nao results in nothing and this suggests that NAO might be closer to white noise.
 
 # Maintenance
 

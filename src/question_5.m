@@ -1,3 +1,7 @@
+% SUMMARY
+% The autocorrelation of nao results in nothing and this suggests that nao
+% might be closer to white noise.
+
 data = readmatrix('Greenland_full_monthly 1901-2018.xlsx');
 
 % Extract all the individual years
@@ -60,19 +64,34 @@ smb_corr = xcorr(smb, i48n);
 nao_corr = xcorr(nao, i48n);
 lsst_corr = xcorr(lsst, i48n);
 
-% TODO: Window length calculation and window function selectability
-figure, plot(smb_corr);
-figure, plot(nao_corr);
-figure, plot(lsst_corr);
+figure, plot(smb_corr)
+title('Cross correlation of SMB and I48N')
+grid on, grid minor
+
+figure, plot(nao_corr)
+title('Cross correlation of NAO and I48N')
+grid on, grid minor
+
+figure, plot(lsst_corr)
+title('Cross correlation of LSST and I48N')
+grid on, grid minor
 
 % XCorrelation of the annual averages with the accumulative iceberg number
 smb_avg_corr = xcorr(smb_avg, i48n_sum);
 nao_avg_corr = xcorr(nao_avg, i48n_sum);
 lsst_avg_corr = xcorr(lsst_avg, i48n_sum);
 
-figure, plot(smb_avg_corr);
-figure, plot(nao_avg_corr);
-figure, plot(lsst_avg_corr);
+figure, plot(smb_avg_corr)
+title('Cross correlation of Average SMB and Accumulative I48N')
+grid on, grid minor
+
+figure, plot(nao_avg_corr)
+title('Cross correlation of Average NAO and Accumulative I48N')
+grid on, grid minor
+
+figure, plot(lsst_avg_corr)
+title('Cross correlation of Average LSST and Accumulative I48N')
+grid on, grid minor
 
 % Findings
 % Autocorrelation results
@@ -80,4 +99,4 @@ figure, plot(lsst_avg_corr);
 nao_auto = xcorr(nao);
 nao_avg_auto = xcorr(nao_avg);
 % Autocorrelation of Nao and Nao_avg results in nothing. This suggests
-% that it is just noise.
+% that it is close to white noise.

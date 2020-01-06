@@ -26,20 +26,17 @@ y_std = std(y);
 x_auto = xcorr(x);
 y_auto = xcorr(y);
 
-% TODO: Labels and title and potentially zero padding
-figure, plot(x_auto)
-figure, plot(y_auto)
-
 corr_coef = xcorr(x, y);
 
-figure, plot(corr_coef)
-
-% Linear regression (stepwiselm or fitlm?)
+% Linear regression (fitlm)
 model_fit = fitlm(x, y);
 
-figure, plot(model_fit), grid on, grid minor
+figure, plot(model_fit)
+title('Distance from CBD vs membership growth with linear model')
+xlabel('Distance from Central Business District (miles)'), ylabel('Membership growth (%)')
+grid on, grid minor
 
-% Prediction of membership growth of churches
+% Prediction of membership growth of churches K, L, M based on distance
 k_dist = 15;
 l_dist = 3;
 m_dist = 18;
